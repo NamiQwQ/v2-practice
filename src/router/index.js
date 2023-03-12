@@ -1,23 +1,77 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'Layout',
+    component: () => import('../views/layout/Index.vue'),
+    children: [
+      {
+        path: '/',
+        name: 'HelloWorld',
+        component: () => import('../views/HelloWorld.vue'),
+      },
+      {
+        path: 'vuebasics',
+        name: 'VueBasics',
+        component: () => import('../views/vue2/basics/Index.vue'),
+        children: [
+          {
+            // Vue实例
+            path: 'instance',
+            name: 'Instance',
+            component: () => import('../views/vue2/basics/Instance/Index.vue'),
+          },
+          {
+            //模板语法
+            path: 'syntax',
+            name: 'Syntax',
+            component: () => import('../views/vue2/basics/Syntax/Index.vue'),
+          },
+          {
+            //计算属性和侦听器
+            path: 'computed',
+            name: 'Computed',
+            component: () => import('../views/vue2/basics/Computed/Index.vue'),
+          },
+          {
+            // 条件渲染
+            path: 'conditional',
+            name: 'Conditional',
+            component: () => import('../views/vue2/basics/Conditional/Index.vue'),
+          },
+          {
+            // 列表渲染
+            path: 'list',
+            name: 'List',
+            component: () => import('../views/vue2/basics/List/Index.vue'),
+          },
+          {
+            //事件处理
+            path: 'events',
+            name: 'Events',
+            component: () => import('../views/vue2/basics/Events/Index.vue'),
+          },
+          {
+            //表单输入绑定
+            path: 'forms',
+            name: 'Forms',
+            component: () => import('../views/vue2/basics/Forms/Index.vue'),
+          },
+          {
+            //组件基础
+            path: 'components',
+            name: 'Components',
+            component: () => import('../views/vue2/basics/Components/Index.vue'),
+          },
+        ]
+      }
+    ]
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+
 ]
 
 const router = new VueRouter({
