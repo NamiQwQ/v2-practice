@@ -1,7 +1,7 @@
 <template>
     <div class="header-container">
         <div class="l-content">
-            <el-button icon="el-icon-menu" @click="" mini></el-button>
+            <el-button icon="el-icon-menu" @click="handleMenu" mini></el-button>
             <!-- 面包屑 -->
             <span class="text">面包屑</span>
         </div>
@@ -25,6 +25,7 @@ export default {
     methods: {
         handleMenu () {
             this.$store.commit('collapseMenu')
+            console.log(this.$store.commit('collapseMenu'))
         }
     }
 }

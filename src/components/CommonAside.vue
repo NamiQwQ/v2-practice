@@ -37,6 +37,33 @@
     </div>
 </template>
 
+<script>
+export default {
+    data () {
+        return {
+            // isCollapse: false
+        };
+    },
+    methods: {
+        handleOpen (key, keyPath) {
+            // console.log(key, keyPath);
+        },
+        handleClose (key, keyPath) {
+            // console.log(key, keyPath);
+        }
+    },
+    computed: {
+        isCollapse () {
+            console.log(this.$store.state.tab.isCollapse);
+            return this.$store.state.tab.isCollapse
+        },
+        //或者
+        // ...mapState('tab', ['isCollapse'])
+    }
+
+}
+</script>
+
 <style lang="scss" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 220px;
@@ -64,21 +91,3 @@
     }
 }
 </style>
-  
-<script>
-export default {
-    data () {
-        return {
-            isCollapse: false
-        };
-    },
-    methods: {
-        handleOpen (key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose (key, keyPath) {
-            console.log(key, keyPath);
-        }
-    }
-}
-</script>
